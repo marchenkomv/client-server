@@ -13,13 +13,13 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
             Socket clientSocket = serverSocket.accept();
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            System.out.println("New connection accepted.");
-            System.out.println("Client IP: " + (((InetSocketAddress)clientSocket.getRemoteSocketAddress()).getAddress())
-                    .toString()
-                    .replace("/",""));
-            System.out.println("Client port: " + clientSocket.getPort());
             String message;
             while ((message = in.readLine()) != null) {
+                System.out.println("New connection accepted.");
+                System.out.println("Client IP: " + (((InetSocketAddress)clientSocket.getRemoteSocketAddress()).getAddress())
+                        .toString()
+                        .replace("/",""));
+                System.out.println("Client port: " + clientSocket.getPort());
                 System.out.println("Client message: " + message);
             }
         } catch (IOException e) {
